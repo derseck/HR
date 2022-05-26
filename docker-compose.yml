@@ -4,7 +4,7 @@ services:
   project_name:
     build: .
     image: project_name:latest
-    container_name: project_name
+    container_name: project_name1
     environment:
       ENVIRONMENT: development
     depends_on:
@@ -19,6 +19,6 @@ services:
 
   db:
     image: postgres:11
-    container_name: project_name-postgres
+    container_name: project_name-postgres1
     environment: 
       POSTGRES_PASSWORD: postgres
