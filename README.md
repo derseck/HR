@@ -1,6 +1,6 @@
 # project_name
 
-Django 3.1.1 + Postgres 11 + Dokku config (Production Ready)
+Django 3.2.12 + Postgres 11 + Dokku config (Production Ready)
 
 ## Documentation ##
 
