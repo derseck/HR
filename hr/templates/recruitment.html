@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Recruitment request
+{% endblock title %}
+{% block jsonp %}
+    <script>
+        var ulrC = 'http://localhost:8080/engine-rest/process-definition/key/Process_18r3szz/start';
+        var data = { variables: { aVariable: { value: 'aStringValue', type: 'String' }, anotherVariable: { value: true, type: 'Boolean' } }, businessKey: 'myBusinessKey' };
+
+        fetch(ulrC, {
+            method: 'POST',
+            credentials: 'omit',
+            body: JSON.stringify(data),
+            headers:{
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+            }).then(res => res.json())
+            .catch(error => console.error('Error:', error))
+            .then(response => console.log('Success:', response));
+    </script>
+{% endblock jsonp %}
+{% block content %}
+    <div class="container bg-white pt-2 pb-2 mt-3 mb-3">
+        <div class="card card-header p-0 mb-0 mt-2">
+            <h3>
+                <a class="btn bg-gray btn-block text-left" data-toggle="collapse" data-target="#recruitmentRequest" aria-expanded="true" aria-controls="recruitmentRequest">
+                    <i class="fa fa-angle-down mr-1"></i>Recruitment request
+                </a>
+            </h3>
+        </div>
+        <div id="recruitmentRequest" class="collapse show">
+            <div class="card card-body">
+                <form id="jobD" method="post"> 
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="form-group row col">
+                            <label for="dateOfRequest" class="col-sm-2 col-form-label">Date of request:</label>
+                            <div class="col-sm-10">
+                                {{ form.dateOfRequest}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group row col">
+                            <label for="numberOfVacancies" class="col-sm-2 col-form-label">Number of vacancies:</label>
+                            <div class="col-sm-10">
+                                {{ form.numberOfVacancies}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group row col">
+                            <label for="title" class="col-sm-2 col-form-label">Title:</label>
+                            <div class="col-sm-10">
+                                {{ form.title}}
+                            </div>
+                        </div>
+                    </div>
+                    <div id="btn_save" class="d-flex col-md-12 justify-content-center">
+                        <input type="submit" class="btn btn-md bg-gray w-25" value="Save">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
