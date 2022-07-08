@@ -162,3 +162,8 @@ Optional: Additional nginx configuration (like client_max_body_size) should be p
 ```
 
 > Further dokku configuration can be found here: http://dokku.viewdocs.io/dokku/
+
+#### Rename project: ####
+sudo docker-compose up --build
+sudo make init
+sudo docker-compose up --remove-orphans
